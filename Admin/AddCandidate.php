@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Add new Candidate</title>
+    <title>اضافة مرشح جديد</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +9,7 @@
 </head>
 <body >
 
-<div class="wrapper d-flex align-items-stretch">
+<div class="wrapper d-flex align-items-stretch" dir="rtl">
 <?php include ('sidebar.html')?>
 
     <!-- Page Content  -->
@@ -21,11 +21,11 @@
 
                 <form action="database/login.php" method="post" style="padding: 50px;">
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Candidate Name <span class="required-star">*</span></label>
+                        <label class="pull-right">اسم المرشح <span class="required-star">*</span></label>
                         <div class="input-group input-group-icon">
-                            <input name="username" type="text" class="form-control input-lg" placeholder="Full Name"
+                            <input name="username" type="text" class="form-control input-lg" placeholder="الاسم الكامل"
                                    required/>
-                            <span class="input-group-addon">
+                            <span class="input-group-addon pull-left">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
 										</span>
@@ -34,16 +34,16 @@
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Candidate Password <span class="required-star">*</span></label>
+                        <label class="pull-right">الرقم السري <span class="required-star">*</span></label>
                         <div class="input-group input-group-icon">
                             <input name="username" type="password" class="form-control input-lg" placeholder="************"
                                    required/>
                         </div>
                     </div>
 
-                    <div class="row" dir="rtl">
-                        <div class=" pull-right" style="display: inline-block; float: right">
-                            <button type="submit" class="btn btn-primary hidden-xs">Add New Candidate</button>
+                    <div class="row" dir="ltr">
+                        <div class="pull-left" style="display: inline-block;">
+                            <button type="submit" class="btn btn-primary hidden-xs">اضافة مرشح جديد</button>
                         </div>
                     </div>
 

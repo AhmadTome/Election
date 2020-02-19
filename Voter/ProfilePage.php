@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>My Profile</title>
+    <title>الصفحة الشخصية</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +9,7 @@
 </head>
 <body >
 
-<div class="wrapper d-flex align-items-stretch">
+<div class="wrapper d-flex align-items-stretch" dir="rtl">
     <?php include ('sidebar.html')?>
 
     <!-- Page Content  -->
@@ -22,11 +22,11 @@
                 <form action="database/login.php" method="post" style="padding: 50px;">
 
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Change My Name </label>
+                        <label class="pull-right">تغيير الاسم </label>
                         <div class="input-group input-group-icon">
-                            <input name="username" type="text" class="form-control input-lg" placeholder="Full Name"
+                            <input name="username" type="text" class="form-control input-lg" placeholder="الاسم الكامل"
                                    required/>
-                            <span class="input-group-addon">
+                            <span class="input-group-addon pull-left">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
 										</span>
@@ -35,19 +35,21 @@
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Change My Password </label>
+                        <label class="pull-right">تغيير الرقم السري </label>
                         <div class="input-group input-group-icon">
                             <input name="username" type="password" class="form-control input-lg" placeholder="************"
                                    required/>
                         </div>
                     </div>
 
-                    <div class="row" dir="rtl">
-                        <div class=" pull-right" style="display: inline-block; ">
-                            <button type="submit" class="btn btn-info hidden-xs">Edit My Info</button>
-                        </div>
+                    <div class="row" dir="ltr">
+
                         <div class=" pull-right" style="display: inline-block; margin-right: 5px;">
-                            <button type="submit" class="btn btn-danger hidden-xs">Delete My Account</button>
+                            <button type="submit" class="btn btn-danger hidden-xs">حذف الحساب الشخصي</button>
+                        </div>
+
+                        <div class=" pull-right" style="display: inline-block; ">
+                            <button type="submit" class="btn btn-info hidden-xs">تعديل معلوماتي الشخصية</button>
                         </div>
                     </div>
 

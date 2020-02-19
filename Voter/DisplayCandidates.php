@@ -9,7 +9,7 @@
 </head>
 <body >
 
-<div class="wrapper d-flex align-items-stretch">
+<div class="wrapper d-flex align-items-stretch" dir="rtl">
     <?php include ('sidebar.html')?>
 
     <!-- Page Content  -->
@@ -22,21 +22,21 @@
                 <form action="database/login.php" method="post" style="padding: 50px;">
 
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Candidate List <span class="required-star">*</span></label>
+                        <label class="pull-right">قائمة المرشحين </label>
                         <div class="input-group input-group-icon">
                             <select class="form-control">
-                                <option selected disabled>--- Select The Candidate Name ---</option>
+                                <option selected disabled>--- اختار اسم المرشح ---</option>
 
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label class="pull-left">Candidate Name <span class="required-star">*</span></label>
+                        <label class="pull-right">اسم المرشح </label>
                         <div class="input-group input-group-icon">
-                            <input name="username" type="text" class="form-control input-lg" placeholder="Full Name"
+                            <input name="username" type="text" class="form-control input-lg" placeholder="الاسم الكامل"
                                    required/>
-                            <span class="input-group-addon">
+                            <span class="input-group-addon pull-right">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
 										</span>
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="letter">The Letter provided by candidate:</label>
+                        <label class="pull-right" for="letter">الرسالة الإنتخابية المقدمة لهذا المرشح :</label>
                         <textarea class="form-control" rows="7" id="letter" disabled></textarea>
                     </div>
 

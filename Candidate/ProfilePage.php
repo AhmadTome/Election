@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>( تعديل / حذف ) مرشح</title>
+    <title>الصفحة الشخصية للمرشح </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +9,7 @@
 </head>
 <body >
 
-<div class="wrapper d-flex align-items-stretch" dir="rtl" >
+<div class="wrapper d-flex align-items-stretch" dir="rtl">
     <?php include ('sidebar.html')?>
 
     <!-- Page Content  -->
@@ -22,17 +22,7 @@
                 <form action="database/login.php" method="post" style="padding: 50px;">
 
                     <div class="form-group mb-lg">
-                        <label class="pull-right">قائمة المرشحين </label>
-                        <div class="input-group input-group-icon">
-                            <select class="form-control">
-                                <option selected disabled>--- اختار اسم المرشح ---</option>
-
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group mb-lg">
-                        <label class="pull-right">اسم المرشح </label>
+                        <label class="pull-right">تغيير الاسم </label>
                         <div class="input-group input-group-icon">
                             <input name="username" type="text" class="form-control input-lg" placeholder="الاسم الكامل"
                                    required/>
@@ -45,20 +35,26 @@
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label class="pull-right">الرقم السري للمرشح </label>
+                        <label class="pull-right">تغيير الرقم السري </label>
                         <div class="input-group input-group-icon">
                             <input name="username" type="password" class="form-control input-lg" placeholder="************"
                                    required/>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="pull-right" for="letter">الرسالة الإنتخابية المقدمة للناخبين :</label>
+                        <textarea class="form-control" rows="7" id="letter" ></textarea>
+                    </div>
+
                     <div class="row" dir="ltr">
 
                         <div class=" pull-right" style="display: inline-block; margin-right: 5px;">
-                            <button type="submit" class="btn btn-danger hidden-xs">حذف المرشح</button>
+                            <button type="submit" class="btn btn-danger hidden-xs">حذف الحساب الشخصي</button>
                         </div>
+
                         <div class=" pull-right" style="display: inline-block; ">
-                            <button type="submit" class="btn btn-info hidden-xs">تعديل معلومات المرشح</button>
+                            <button type="submit" class="btn btn-info hidden-xs">تعديل معلوماتي الشخصية</button>
                         </div>
                     </div>
 
