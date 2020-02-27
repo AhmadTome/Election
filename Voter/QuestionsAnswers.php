@@ -16,6 +16,8 @@
     <!-- start: page -->
     <div class="limiter" >
         <div class="container-login100">
+            <?php include('logo.html') ?>
+
             <div class="wrap-login100" style="overflow-y: scroll; height: 550px;%;">
 
 

@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,16 +19,20 @@
 <body>
 <!-- main -->
 <div class="main-w3layouts wrapper">
-    <h1>صفحة تسجيل الدخول</h1>
+    <div style="width: 100%; display: inline-block; text-align: center">
+        <img src="images/logo.png" width="200px">
+    </div>
     <div class="main-agileinfo">
         <div class="agileits-top">
-            <form action="#" method="post">
-                <input class="text email" type="email" name="email" placeholder="Email" required="">
-                <input class="text" type="password" name="password" placeholder="Password" required="">
 
-                <input type="submit" value="تسجيلب دخول">
+            <?php include ('messages/message.php')?>
+            <form action="database/login.php" method="post">
+                <input class="text email" type="email" name="username" placeholder="Email" required="">
+                <input class="text" type="password" name="pwd" placeholder="Password" required="">
+
+                <input type="submit" value="تسجيل دخول">
             </form>
-            <p>ليس لديك حساب ؟ <a href="register.html"> سجل هنا!</a></p>
+            <p>ليس لديك حساب ؟ <a href="register.php"> سجل هنا!</a></p>
         </div>
     </div>
     <!-- copyright -->
