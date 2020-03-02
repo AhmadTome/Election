@@ -17,6 +17,7 @@ $name = $_GET["name"];
 $pass = $_GET["pass"];
 $type = $_GET["type"];
 
+
 if($type == "edit"){
     $query = "UPDATE `users` SET `password`=".$pass.",`name`='". $name ."' WHERE `email` = '". $_SESSION['user_email'] ."'";
 }else if($type == "delete"){

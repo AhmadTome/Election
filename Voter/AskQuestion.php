@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,8 +13,12 @@
 <body >
 
 <div class="wrapper d-flex align-items-stretch" dir="rtl">
-    <?php include ('sidebar.html')?>
-
+    <?php
+    include ('sidebar.html');
+    include ('../Classes/functionallity.php');
+    $param = new functionallity();
+    $info = $param->getInfo()
+    ?>
     <!-- Page Content  -->
     <!-- start: page -->
     <div class="limiter">
@@ -20,28 +27,35 @@
 
             <div class="wrap-login100">
 
+                <?php include('../messages/message.php') ?>
 
-                <form action="database/login.php" method="post" style="padding: 50px;">
+                <form action="../database/addQuestion.php" method="post" style="padding: 50px;">
 
                     <div class="form-group mb-lg">
                         <label class="pull-right">العنوان<span class="required-star">*</span></label>
                         <div class="input-group input-group-icon">
-                            <input name="username" type="text" class="form-control input-lg" placeholder="عنوان السؤال"
+                            <input name="title" type="text" class="form-control input-lg" placeholder="عنوان السؤال"
                                    required/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="pull-right" for="letter">نص السؤال<span class="required-star ">*</span></label>
-                        <textarea class="form-control" rows="7" id="letter" ></textarea>
+                        <textarea name="q_text" class="form-control" rows="7" id="letter" ></textarea>
                     </div>
 
                     <div class="form-group mb-lg">
-                        <label class="pull-right">قائمة المرشحين <span class="required-star">*</span></label>
+                        <label class="pull-right">قائمة المرشحين </label>
                         <div class="input-group input-group-icon">
-                            <select class="form-control">
-                                <option selected disabled>--- Select The Candidate Name ---</option>
-                                <option>--- All Candidate ---</option>
+                            <select class="form-control" name="candidate_select" id="candidate_select">
+                                <option selected disabled>--- اختار اسم المرشح ---</option>
+                                <option value="all">جميع المرشحين</option>
+                                <?php
+                                for ($i=0; $i < count($info) ; $i++){
+                                    echo '<option value='. $info[$i]["id"] .'>'. $info[$i]["name"] .'</option>';
+                                }
+
+                                ?>
 
                             </select>
                         </div>

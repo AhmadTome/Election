@@ -1,4 +1,4 @@
-<p class="text-left" style="color: red">
+<p class="text-right" style="color: red;padding-right: 15px">
     <?php
     if (isset($_SESSION['Error'])) {
         echo $_SESSION['Error'];
@@ -8,7 +8,7 @@
     }
     ?>
 </p>
-<p class="text-left" style="color: white; background-color: green" >
+<p class="text-right" style="color: white; background-color: green;padding-right: 15px" >
     <?php
     if( isset($_SESSION['success']) )
     {
