@@ -72,4 +72,6 @@ class functionallity {
             header('Location: ../login.php');
         }
     }
+
+
 }

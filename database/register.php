@@ -25,6 +25,23 @@ $result = mysqli_query($conn,$query);
 if($result) {
     session_start();
     $_SESSION['user_email'] = $email;
+
+
+
+
+    $query2 = "select * from  `users` where email = '".$email."' and password='".$pwd."'";
+    $result2 = $conn->query($query2);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $_SESSION['user_name'] = $row['name'];
+    $_SESSION['user_pass'] = $row['password'];
+    $_SESSION['user_id'] = $row['id'];
+}
+
+
+
+
+
     echo "Succesfully registered";
     header('Location: ../Voter/ProfilePage.php');
 

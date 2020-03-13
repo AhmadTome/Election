@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $_SESSION['user_name'] = $row['name'];
     $_SESSION['user_pass'] = $row['password'];
+    $_SESSION['user_id'] = $row['id'];
 
     if($row['type'] =='user'){
         header('Location: ../Voter/ProfilePage.php');
