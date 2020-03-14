@@ -13,8 +13,19 @@ if (!$conn) {
 }
 mysqli_set_charset($conn,"utf8");
 $email = $_SESSION['user_email'];
-$query = "SELECT * , question.id as q_id  FROM `question` left join ques_ans on question.id = ques_ans.q_id
-where ques_ans.ans IS NULL and (question.candidate_id ='". $_SESSION['user_id'] ."' or question.candidate_id='all')";
+
+
+
+$query = "";
+if($_GET["type"] == "me"){
+    $query = "SELECT * , question.id as q_id  FROM `question` left join ques_ans on question.id = ques_ans.q_id
+where ques_ans.ans IS NOT NULL and (question.candidate_id ='". $_SESSION['user_id'] ."' or question.candidate_id='all')";
+
+}else{
+    $query = "SELECT * , question.id as q_id  FROM `question` left join ques_ans on question.id = ques_ans.q_id
+where ques_ans.ans IS NOT NULL";
+
+}
 
 
 $result = $conn->query($query);
@@ -26,7 +37,8 @@ if ($result->num_rows > 0) {
                 "q_text" => $row["q_text"],
                 "id" => $row["q_id"],
                 "candidate_id" => $row["candidate_id"],
-                "user_email" => $row["user_email"]
+                "user_email" => $row["user_email"],
+                "ans" => $row["ans"],
             ]);
     }
     $info = json_decode(json_encode($info), true);

@@ -40,32 +40,7 @@
 
                     </div>
 
-                    <div class="col-sm-12" style="margin-top: 10px; display: none;" id="myquestion_dev">
-                        <div class="panel panel-default">
-                            <div class="panel-heading text-right">
-                                <strong>نص السؤال </strong>
-                            </div>
-                            <div class="panel-body text-right">
-                                <textarea class="form-control" rows="7"></textarea>
-                            </div>
 
-                                <div style="padding: 5px;padding-bottom: 10px;">
-                                    <button type="submit" class="btn btn-success ">الإجابة على السؤال</button>
-                                </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12" style="margin: 10px;">
-                        <div class="panel panel-default">
-                            <div class="panel-heading text-right">
-                                <strong>نص السؤال </strong>
-                            </div>
-                            <div class="panel-body text-right">
-                                الجواب
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -89,7 +64,10 @@
 
 <script>
     $(document).ready(function () {
+        $("#myquestion").trigger("click");
         $("#myquestion").on("click",function () {
+
+
             $(this).attr('class','nav-link active')
             $("#allquestion").attr('class','nav-link')
             $("#myquestion_ans").attr('class','nav-link')
@@ -100,20 +78,19 @@
                 type: "get",
                 success: function (res) {
                     res = JSON.parse(res);
-                    console.log(res)
 
                     for(var i=0;i<res.length;i++){
-                        $("#content").append('<div class="col-sm-12" style="margin-top: 10px;" id="myquestion_dev">' +
+                        $("#content").append('<div class="col-sm-12" style="margin-top: 10px;" class="myquestion_dev">' +
                             '                        <div class="panel panel-default">' +
-                            '                            <div class="panel-heading text-right" data-id='+ res[i]["id"] +'>' +
+                            '                            <div class="panel-heading text-right" >' +
                             '                                <strong>'+ res[i]["q_text"] +' </strong>' +
                             '                            </div>' +
                             '                            <div class="panel-body text-right">' +
-                            '                                <textarea class="form-control" rows="7"></textarea>' +
+                            '                                <textarea class="form-control textarea-ans" rows="7"></textarea>' +
                             '                            </div>' +
                             '' +
                             '                                <div style="padding: 5px;padding-bottom: 10px;">' +
-                            '                                    <button type="submit" class="btn btn-success ">الإجابة على السؤال</button>' +
+                            '                                    <input type="button" class="btn btn-success add_ans_to_question" value="الإجابة على السؤال" data-id='+ res[i]["id"] +'>' +
                             '                                </div>' +
                             '                        </div>' +
                             '                    </div>')
@@ -129,12 +106,58 @@
 
         })
 
+        $("#content").delegate(".add_ans_to_question","click", function () {
+            var id = $(this).attr('data-id');
+            var ans = $(this).parent().parent().find('textarea').val();
+
+            $.ajax({
+                url: "../database/answerTheQuestion.php",
+                type: "get",
+                data:{"id":id , "ans":ans},
+                success: function (res) {
+                alert("تم إضافة الاجابة بنجاح")
+                    console.log( $(this).parent().parent().parent())
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+
+        })
+
         $("#allquestion").on("click",function () {
             $(this).attr('class','nav-link active')
             $("#myquestion").attr('class','nav-link')
             $("#myquestion_ans").attr('class','nav-link')
 
-            $("#myquestion_dev").hide()
+            $("#content").empty();
+            $.ajax({
+                url: "../database/getMyQuestionAnswered.php",
+                type: "get",
+                data:{"type":"all"},
+                success: function (res) {
+                    res = JSON.parse(res);
+
+                    for(var i=0;i<res.length;i++){
+                        $("#content").append(' <div class="col-sm-12" style="margin: 10px;">' +
+                            '                        <div class="panel panel-default">' +
+                            '                            <div class="panel-heading text-right">' +
+                            '                                <strong>'+ res[i]["q_text"] +' </strong>' +
+                            '                            </div>' +
+                            '                            <div class="panel-body text-right">' +
+                            '                                '+ res[i]["ans"] +'' +
+                            '                            </div>' +
+                            '                        </div>' +
+                            '                    </div>')
+                    }
+
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
 
         })
 
@@ -143,9 +166,33 @@
             $("#myquestion").attr('class','nav-link')
             $("#allquestion").attr('class','nav-link')
 
+            $("#content").empty();
+            $.ajax({
+                url: "../database/getMyQuestionAnswered.php",
+                type: "get",
+                data:{"type":"me"},
+                success: function (res) {
+                    res = JSON.parse(res);
 
-            $("#myquestion_dev").hide()
+                    for(var i=0;i<res.length;i++){
+                        $("#content").append(' <div class="col-sm-12" style="margin: 10px;">' +
+                            '                        <div class="panel panel-default">' +
+                            '                            <div class="panel-heading text-right">' +
+                            '                                <strong>'+ res[i]["q_text"] +' </strong>' +
+                            '                            </div>' +
+                            '                            <div class="panel-body text-right">' +
+                            '                                '+ res[i]["ans"] +'' +
+                            '                            </div>' +
+                            '                        </div>' +
+                            '                    </div>')
+                    }
 
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
         })
     })
 </script>
